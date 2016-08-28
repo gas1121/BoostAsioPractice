@@ -1,8 +1,8 @@
 #include <thread>
-#include "SyncClient.h"
-#include "AsyncClient.h"
-#include "StacklessCoroutineClient.h"
-#include "StackfulCoroutineClient.h"
+#include "BoostAsioClient/SyncClient.h"
+#include "BoostAsioClient/AsyncClient.h"
+#include "BoostAsioClient/StacklessCoroutineClient.h"
+#include "BoostAsioClient/StackfulCoroutineClient.h"
 #include <iostream>
 
 using namespace BoostAsioClient;

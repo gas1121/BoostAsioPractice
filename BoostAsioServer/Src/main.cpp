@@ -1,6 +1,6 @@
 #include <thread>
-#include "SyncServer.h"
-#include "AsyncServer.h"
+#include "BoostAsioServer/SyncServer.h"
+#include "BoostAsioServer/AsyncServer.h"
 #include <iostream>
 
 using namespace BoostAsioServer;

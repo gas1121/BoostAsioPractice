@@ -15,7 +15,8 @@ set(SOURCE
 source_group("Include" FILES ${INCLUDE})
 source_group("Source" FILES ${SOURCE})
 
-include_directories(./Include/BoostAsioClient)
+include_directories(./Include)
+include_directories(${PROJECT_SOURCE_DIR}/Core/Include)
 include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/boost/include)
 
 add_executable(${EXE_NAME} ${INCLUDE} ${SOURCE})
