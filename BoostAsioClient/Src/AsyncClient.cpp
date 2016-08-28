@@ -1,19 +1,11 @@
 #include "BoostAsioClient/AsyncClient.h"
 #include <thread>
 #include <iostream>
-#include <random>
+
+#include <Core/Core.hpp>
 
 using namespace boost::asio;
-
-namespace {
-	int RandomInt(int min, int max)
-	{
-		std::random_device rd;
-		std::mt19937 mt(rd());
-		std::uniform_int_distribution<int> result(min, max);
-		return result(mt);
-	}
-}
+using namespace BoostAsioPractice;
 
 namespace BoostAsioClient {
 
@@ -172,7 +164,7 @@ namespace BoostAsioClient {
 
 	void AsyncClient::PostponePing()
 	{
-		int sleepTime = RandomInt(0, 7000);
+		int sleepTime = RandomNumber<int>(0, 7000);
 		error_code ec;
 		timer_.expires_from_now(std::chrono::milliseconds(sleepTime),ec);
 		timer_.async_wait(std::bind(&AsyncClient::DoPing, shared_from_this()));

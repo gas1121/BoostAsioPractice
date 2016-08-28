@@ -1,19 +1,13 @@
 #include "BoostAsioClient/SyncClient.h"
 #include <thread>
 #include <iostream>
-#include <random>
+
+#include <Core/Core.hpp>
 
 using namespace boost::asio;
+using namespace BoostAsioPractice;
 
 namespace {
-    int RandomInt(int min, int max)
-    {
-        std::random_device rd;
-        std::mt19937 mt(rd());
-        std::uniform_int_distribution<int> result(min, max);
-        return result(mt);
-    }
-
 	BoostAsioClient::SyncClient::Status StatusFromBoostErrorCode(boost::system::error_code ec)
 	{
 		if (ec)
@@ -72,7 +66,7 @@ namespace BoostAsioClient {
 			if (Status::kSuccess==WriteRequest()
 				&&Status::kSuccess==ReadAnswer())
 			{
-				int sleepTime = RandomInt(0, 7000);
+				int sleepTime = RandomNumber<int>(0, 7000);
 				std::this_thread::sleep_for(std::chrono::milliseconds(sleepTime));
 			}
 			else
