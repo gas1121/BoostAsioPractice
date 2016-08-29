@@ -15,6 +15,10 @@ include_directories(./Include)
 include_directories(${PROJECT_SOURCE_DIR}/Core/Include)
 include_directories(${BOOST_INCLUDEDIR})
 
+message("server Boost:" ${BOOST_ROOT})
+message("Boost:" ${BOOST_INCLUDEDIR})
+message("Boost:" ${BOOST_LIBRARYDIR})
+
 add_executable(${EXE_NAME} ${INCLUDE} ${SOURCE})
 
 #Boost.Asio support
