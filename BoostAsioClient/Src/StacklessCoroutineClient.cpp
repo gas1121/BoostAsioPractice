@@ -163,7 +163,7 @@ namespace BoostAsioClient {
 
 	void StacklessCoroutineClient::PostponePing()
 	{
-		int sleepTime = RandomInt<int>(0, 7000);
+		int sleepTime = RandomNumber<int>(0, 7000);
 		error_code ec;
 		timer_.expires_from_now(std::chrono::milliseconds(sleepTime), ec);
 		timer_.async_wait(std::bind(&StacklessCoroutineClient::DoPing, shared_from_this()));

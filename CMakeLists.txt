@@ -11,6 +11,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Setting Boost dependency
 if(USE_LOCAL_THIRD_PARTY_LIBRARY)
+    set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/ThirdParty/boost)
+    set(BOOST_INCLUDEDIR ${BOOST_ROOT}/include)
+    set(BOOST_LIBRARYDIR ${BOOST_ROOT}/lib)
 else()
     find_package(Boost 1.60 REQUIRED)
 endif()
