@@ -17,6 +17,12 @@ environment:
     VS_PLATFORM: x64
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-14.0
 
+install:
+- $source = "https://raw.githubusercontent.com/philsquared/Catch/master/single_include/catch.hpp"
+- $destination = "c:\\projects\BoostAsioPractice\ThirdParty\Catch\catch.hpp"
+- mkdir ThirdParty\Catch
+- Invoke-WebRequest $source -OutFile $destination
+
 before_build:
 - cmake -DUSE_LOCAL_THIRD_PARTY_LIBRARY=OFF -H. -BBuild/VS -G "Visual Studio %VS_VERSION%" -DCMAKE_GENERATOR_PLATFORM=%VSPLATFORM% -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=true -Wno-dev -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDEDIR="%BOOST_INCLUDEDIR%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%"
 
