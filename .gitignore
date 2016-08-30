@@ -3,6 +3,7 @@ Build/
 
 # thrid party library
 ThirdParty/boost/
+ThirdParty/Catch/
 
 # Compiled Object files
 *.slo

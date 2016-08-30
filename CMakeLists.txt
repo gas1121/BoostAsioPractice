@@ -28,6 +28,7 @@ add_subdirectory(Core)
 add_subdirectory(BoostAsioServer)
 add_subdirectory(BoostAsioClient)
 add_subdirectory(ThirdParty)
+add_subdirectory(Test)
 
 install(FILES ${BOOST_Debug_DLLS}
     DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug
