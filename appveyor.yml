@@ -10,30 +10,30 @@ environment:
   BOOST_INCLUDEDIR: C:\Libraries\boost_1_60_0
 
   matrix:
-  #- VS_VERSION: 9 2008
-  #  VS_PLATFORM: win32
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-9.0
-  #- VS_VERSION: 9 2008
-  #  VS_PLATFORM: x64
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-9.0
-  #- VS_VERSION: 10 2010
-  #  VS_PLATFORM: win32
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-10.0
-  #- VS_VERSION: 10 2010
-  #  VS_PLATFORM: x64
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-10.0
-  #- VS_VERSION: 11 2012
-  #  VS_PLATFORM: win32
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-11.0
-  #- VS_VERSION: 11 2012
-  #  VS_PLATFORM: x64
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-11.0
-  #- VS_VERSION: 12 2013
-  #  VS_PLATFORM: win32
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-12.0
-  #- VS_VERSION: 12 2013
-  #  VS_PLATFORM: x64
-  #  BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-12.0
+  - VS_VERSION: 9 2008
+    VS_PLATFORM: win32
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-9.0
+  - VS_VERSION: 9 2008
+    VS_PLATFORM: x64
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-9.0
+  - VS_VERSION: 10 2010
+    VS_PLATFORM: win32
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-10.0
+  - VS_VERSION: 10 2010
+    VS_PLATFORM: x64
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-10.0
+  - VS_VERSION: 11 2012
+    VS_PLATFORM: win32
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-11.0
+  - VS_VERSION: 11 2012
+    VS_PLATFORM: x64
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-11.0
+  - VS_VERSION: 12 2013
+    VS_PLATFORM: win32
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-12.0
+  - VS_VERSION: 12 2013 Win64
+    VS_PLATFORM: x64
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-12.0
   - VS_VERSION: 14 2015
     VS_PLATFORM: win32
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib32-msvc-14.0
