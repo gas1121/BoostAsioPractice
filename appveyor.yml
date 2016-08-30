@@ -7,7 +7,7 @@ configuration:
 
 environment:
   BOOST_ROOT: C:\Libraries\boost_1_60_0
-  BOOST_INCLUDEDIR: C:\Libraries\boost_1_60_0\include
+  BOOST_INCLUDEDIR: C:\Libraries\boost_1_60_0
 
   matrix:
   #- VS_VERSION: 9 2008
