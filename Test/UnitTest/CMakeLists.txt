@@ -12,12 +12,13 @@ set(SOURCE
 
 source_group("Source" FILES ${SOURCE})
 
-include_directories(${PROJECT_SOURCE_DIR}/ThirdParty/Catch)
 include_directories(${PROJECT_SOURCE_DIR}/Core/Include)
 include_directories(${PROJECT_SOURCE_DIR}/BoostAsioServer/Include)
 include_directories(${PROJECT_SOURCE_DIR}/BoostAsioClient/Include)
 #Boost.Asio support
 include_directories(${Boost_INCLUDE_DIRS})
+#Catch library support
+include_directories(${CATCH_INCLUDE_DIRS})
 
 add_executable(${EXE_NAME} ${SOURCE})
 

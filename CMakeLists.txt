@@ -6,6 +6,7 @@ project(BoostAsioPractice)
 
 option(USE_LOCAL_THIRD_PARTY_LIBRARY 
     "Set on to search external librarys in ThirdParty folder, OFF to search in operation system." ON)
+option(BUILD_TESTS "Build tests." ON)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -28,7 +29,10 @@ add_subdirectory(Core)
 add_subdirectory(BoostAsioServer)
 add_subdirectory(BoostAsioClient)
 add_subdirectory(ThirdParty)
-add_subdirectory(Test)
+
+if(BUILD_TESTS)
+    add_subdirectory(Test)
+endif()
 
 install(FILES ${BOOST_Debug_DLLS}
     DESTINATION ${CMAKE_BINARY_DIR}/bin/Debug
