@@ -18,13 +18,14 @@ environment:
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_60_0\lib64-msvc-14.0
 
 install:
-- ps: $catchHeaderPath = "ThirdParty\Catch\catch.hpp""
-- ps: if (!(Test-Path $catchHeaderPath)) {
-- ps: $source = "https://raw.githubusercontent.com/philsquared/Catch/v1.5.6/single_include/catch.hpp"
-- ps: $destination = "c:\\projects\BoostAsioPractice\ThirdParty\Catch\catch.hpp"
-- ps: mkdir ThirdParty\Catch
-- ps: Invoke-WebRequest $source -OutFile $destination
-- ps: }
+- ps: |
+    $catchHeaderPath = "ThirdParty\Catch\catch.hpp""
+    if (!(Test-Path $catchHeaderPath)) {
+      $source = "https://raw.githubusercontent.com/philsquared/Catch/v1.5.6/single_include/catch.hpp"
+      $destination = "c:\\projects\BoostAsioPractice\ThirdParty\Catch\catch.hpp"
+      mkdir ThirdParty\Catch
+      Invoke-WebRequest $source -OutFile $destination
+    }
 
 before_build:
 - cmake -DUSE_LOCAL_THIRD_PARTY_LIBRARY=OFF -H. -BBuild/VS -G "Visual Studio %VS_VERSION%" -DCMAKE_GENERATOR_PLATFORM=%VSPLATFORM% -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=true -Wno-dev -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDEDIR="%BOOST_INCLUDEDIR%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%"
