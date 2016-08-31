@@ -31,6 +31,7 @@ add_subdirectory(BoostAsioClient)
 add_subdirectory(ThirdParty)
 
 if(BUILD_TESTS)
+    enable_testing()
     add_subdirectory(Test)
 endif()
 

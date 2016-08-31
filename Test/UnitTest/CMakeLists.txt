@@ -29,3 +29,6 @@ target_link_libraries(${EXE_NAME} ${Boost_LIBRARIES})
 add_definitions("-DBOOST_ALL_NO_LIB")
 #disable warning for WIN32_WINNT in boost
 add_definitions("-D_WIN32_WINNT=0x0501")
+
+add_test(NAME unittest
+    COMMAND ${EXE_NAME})

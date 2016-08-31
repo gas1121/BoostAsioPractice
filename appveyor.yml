@@ -36,3 +36,7 @@ build:
   project: Build\VS\BoostAsioPractice.sln
   parallel: true
   verbosity: minimal
+
+test_script:
+- cd Build\VS
+- ctest --verbose --build-config %CONFIGURATION%
