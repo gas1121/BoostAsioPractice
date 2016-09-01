@@ -34,7 +34,7 @@ cache:
   - ThirdParty\Catch -> appveyor.yml
 
 build:
-  project: Build\VS\BoostAsioPractice.sln
+  project: Build\VS\INSTALL.vcxproj
   parallel: true
   verbosity: minimal
 
