@@ -11,4 +11,4 @@ source_group("Source" FILES ${SOURCE})
 
 include_directories(./Include)
 
-add_library(${LIB_NAME} ${INCLUDE} ${SOURCE})
+add_library(${LIB_NAME} STATIC ${INCLUDE} ${SOURCE})
