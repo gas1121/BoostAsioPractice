@@ -6,6 +6,7 @@ using namespace boost::asio;
 
 namespace {
 	typedef std::vector<BoostAsioServer::AsyncClientConnectionPTR> ClientPTRArray;
+    const unsigned short kPort = 8001;
 
 	ClientPTRArray gClientsArray;
 }
@@ -16,7 +17,7 @@ namespace BoostAsioServer {
 	{
 		io_service service;
 		AsyncClientConnectionPTR client = AsyncClientConnection::New(&service);
-		ip::tcp::acceptor acceptor(service, ip::tcp::endpoint(ip::tcp::v4(), 8001));
+		ip::tcp::acceptor acceptor(service, ip::tcp::endpoint(ip::tcp::v4(), kPort));
 		std::function<void(AsyncClientConnectionPTR, const boost::system::error_code&)> HandleAccept =
 			[&HandleAccept, &service, &acceptor](AsyncClientConnectionPTR client, const boost::system::error_code& err) {
 			client->Start();

@@ -27,7 +27,9 @@ FILTER_LIST("${Boost_LIBRARIES}" BOOST_Release_DLLS optimized debug)
 
 add_subdirectory(Core)
 add_subdirectory(BoostAsioServer)
+add_subdirectory(BoostAsioServerMain)
 add_subdirectory(BoostAsioClient)
+add_subdirectory(BoostAsioClientMain)
 add_subdirectory(ThirdParty)
 
 if(BUILD_TESTS)

@@ -45,7 +45,7 @@ namespace BoostAsioServer {
         tcp::socket socket_;
         enum { kBuffSize = 1024 };
         char buff_[kBuffSize];
-        int readedSize_;
+        size_t readedSize_;
         bool started_;
         std::string userName_;
         bool isClientsChanged_;

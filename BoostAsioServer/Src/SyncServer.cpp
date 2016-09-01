@@ -9,6 +9,8 @@ namespace {
     typedef std::vector<BoostAsioServer::SyncClientConnectionPTR> ClientPTRArray;
     typedef std::lock_guard<std::mutex> ClientConnectionLock;
 
+    const unsigned short kPort = 8001;
+
 	BoostAsioServer::SyncClientConnection::Status StatusFromBoostErrorCode(boost::system::error_code ec)
 	{
 		if (ec)
@@ -41,7 +43,7 @@ namespace BoostAsioServer {
 
     void AcceptThread()
     {
-        ip::tcp::acceptor acceptor(gService, ip::tcp::endpoint(ip::tcp::v4(), 8001));
+        ip::tcp::acceptor acceptor(gService, ip::tcp::endpoint(ip::tcp::v4(), kPort));
         while (true)
         {
             SyncClientConnectionPTR client(new SyncClientConnection());

@@ -8,11 +8,12 @@ using namespace boost::asio;
 using namespace BoostAsioPractice;
 
 namespace BoostAsioClient {
+    const unsigned short kPort = 8001;
 
 	void TestStackfulCoroutineClient()
 	{
 		io_service service;
-		ip::tcp::endpoint ep(ip::address::from_string("127.0.0.1"), 8001);
+		ip::tcp::endpoint ep(ip::address::from_string("127.0.0.1"), kPort);
 		std::vector<std::string> clientList;
 		clientList.push_back("John");
 		clientList.push_back("James");

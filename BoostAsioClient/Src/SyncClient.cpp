@@ -8,7 +8,9 @@ using namespace boost::asio;
 using namespace BoostAsioPractice;
 
 namespace {
-	BoostAsioClient::SyncClient::Status StatusFromBoostErrorCode(boost::system::error_code ec)
+    const unsigned short kPort = 8001;
+
+    BoostAsioClient::SyncClient::Status StatusFromBoostErrorCode(boost::system::error_code ec)
 	{
 		if (ec)
 		{
@@ -26,7 +28,7 @@ namespace BoostAsioClient {
     void RunSyncClient(const std::string& clientName)
     {
         io_service service;
-        ip::tcp::endpoint ep(ip::address::from_string("127.0.0.1"), 8001);
+        ip::tcp::endpoint ep(ip::address::from_string("127.0.0.1"), kPort);
         SyncClient client(clientName,&service);
         if (SyncClient::Status::kSuccess==client.Connect(ep))
         {

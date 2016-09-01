@@ -3,6 +3,8 @@ set(EXE_NAME UnitTest)
 set(SOURCE
     "main.cpp"
     "Core/UtilityTest.cpp"
+    "BoostAsioClient/ClientTestUtility.h"
+    "BoostAsioClient/ClientTestUtility.cpp"
     "BoostAsioServer/AsyncServerTest.cpp"
     "BoostAsioServer/SyncServerTest.cpp"
     "BoostAsioClient/AsyncClientTest.cpp"
@@ -12,6 +14,7 @@ set(SOURCE
 
 source_group("Source" FILES ${SOURCE})
 
+include_directories(.)
 include_directories(${PROJECT_SOURCE_DIR}/Core/Include)
 include_directories(${PROJECT_SOURCE_DIR}/BoostAsioServer/Include)
 include_directories(${PROJECT_SOURCE_DIR}/BoostAsioClient/Include)
@@ -22,6 +25,8 @@ include_directories(${CATCH_INCLUDE_DIRS})
 
 add_executable(${EXE_NAME} ${SOURCE})
 
+target_link_libraries(${EXE_NAME} BoostAsioClient)
+target_link_libraries(${EXE_NAME} BoostAsioServer)
 #Boost.Asio support
 target_link_libraries(${EXE_NAME} ${Boost_LIBRARIES})
 

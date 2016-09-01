@@ -1,10 +1,9 @@
-set(EXE_NAME BoostAsioServer)
+set(LIB_NAME BoostAsioServer)
 
 set(INCLUDE
     "Include/BoostAsioServer/SyncServer.h"
     "Include/BoostAsioServer/AsyncServer.h")
 set(SOURCE
-    "Src/main.cpp"
     "Src/SyncServer.cpp"
     "Src/AsyncServer.cpp")
 
@@ -16,10 +15,11 @@ include_directories(${PROJECT_SOURCE_DIR}/Core/Include)
 #Boost.Asio support
 include_directories(${Boost_INCLUDE_DIRS})
 
-add_executable(${EXE_NAME} ${INCLUDE} ${SOURCE})
+add_library(${LIB_NAME} STATIC ${INCLUDE} ${SOURCE})
 
+target_link_libraries(${LIB_NAME} Core)
 #Boost.Asio support
-target_link_libraries(${EXE_NAME} ${Boost_LIBRARIES})
+target_link_libraries(${LIB_NAME} ${Boost_LIBRARIES})
 
 #disable Boost autolinking
 add_definitions("-DBOOST_ALL_NO_LIB")
