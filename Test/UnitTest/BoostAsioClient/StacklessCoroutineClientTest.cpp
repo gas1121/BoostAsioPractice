@@ -24,7 +24,7 @@ namespace
     }
 }
 
-TEST_CASE("StacklessCoroutineClientTest", "[Asio][Client]")
+TEST_CASE("StacklessCoroutineClientTest", "[Asio][Async][Client]")
 {
     std::thread serverThread(MockServer);
     std::thread clientThread(ClientInstance);

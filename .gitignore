@@ -1,6 +1,12 @@
 # cmake build folder
 Build/
 
+# qt config file
+*.user
+
+# vs code setting
+.vscode
+
 # thrid party library
 ThirdParty/boost/
 ThirdParty/Catch/

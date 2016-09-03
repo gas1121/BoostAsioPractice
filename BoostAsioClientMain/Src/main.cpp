@@ -4,6 +4,7 @@
 #include "BoostAsioClient/StacklessCoroutineClient.h"
 #include "BoostAsioClient/StackfulCoroutineClient.h"
 #include <iostream>
+#include <cstdio>
 
 using namespace BoostAsioClient;
 
@@ -16,16 +17,20 @@ int main(int argc, char* argv[])
 	std::thread clientThread2(RunSyncClient, "Shawn");
 	clientThread1.join();
 	clientThread2.join();
-	system("pause");
+	std::cout<<"Press any key to Continue...\n";
+	getchar();
 #elif ASYNC_TEST
     TestAsyncClient();
-	system("pause");
+	std::cout<<"Press any key to Continue...\n";
+	getchar();
 #elif STACKLESS_COROUTINE_TEST
 	TestStacklessCoroutineClient();
-	system("pause");
+	std::cout<<"Press any key to Continue...\n";
+	getchar();
 #elif STACKFUL_COROUTINE_TEST
 	TestStackfulCoroutineClient();
-	system("pause");
+	std::cout<<"Press any key to Continue...\n";
+	getchar();
 #endif
 	return 0;
 }

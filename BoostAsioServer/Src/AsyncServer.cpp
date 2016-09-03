@@ -56,7 +56,9 @@ namespace BoostAsioServer {
         {
             return;
         }
-        socket_.close();
+        error_code ec;
+        socket_.shutdown(ip::tcp::socket::shutdown_both, ec);
+        socket_.close(ec);
         started_ = false;
 
 		AsyncClientConnectionPTR self = shared_from_this();
@@ -87,6 +89,10 @@ namespace BoostAsioServer {
 
     void AsyncClientConnection::DoRead()
     {
+        if (!Started())
+        {
+            return;
+        }
         async_read(socket_, buffer(readBuffer_), std::bind(&AsyncClientConnection::IsReadComplete, shared_from_this(),
             std::placeholders::_1, std::placeholders::_2), std::bind(&AsyncClientConnection::OnRead, shared_from_this(),
                 std::placeholders::_1, std::placeholders::_2));
@@ -167,7 +173,7 @@ namespace BoostAsioServer {
 		time_point now = std::chrono::system_clock::now();
 		std::chrono::system_clock::duration period = now - lastPing_;
 		auto periodMs = std::chrono::duration_cast<std::chrono::milliseconds>(period);
-		if (periodMs.count() > 5000)
+        if (periodMs.count() > 5000)
 		{
 			Stop();
 		}
@@ -188,6 +194,14 @@ namespace BoostAsioServer {
 
     void AsyncClientConnection::OnWrite(const error_code& err, size_t bytes)
     {
+        if(err)
+        {
+            Stop();
+        }
+        if (!Started())
+        {
+            return;
+        }
         DoRead();
     }
 

@@ -40,6 +40,7 @@ namespace BoostAsioClient {
 			return;
 		}
 		error_code ec;
+		socket_.shutdown(ip::tcp::socket::shutdown_both, ec);
 		socket_.close(ec);
 		started_ = false;
 	}

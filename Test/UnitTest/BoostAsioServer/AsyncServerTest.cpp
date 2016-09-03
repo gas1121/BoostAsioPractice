@@ -17,7 +17,10 @@ namespace
     {
         io_service service;
         AsyncClientConnectionPTR client = AsyncClientConnection::New(&service);
-        ip::tcp::acceptor acceptor(service, ip::tcp::endpoint(ip::tcp::v4(), kPort));
+        error_code ec;
+        ip::tcp::acceptor acceptor(service, ip::tcp::endpoint(ip::tcp::v4(), kPort), ec);
+        INFO("acceptor:"+ec.message());
+        REQUIRE(!ec);
         std::function<void(AsyncClientConnectionPTR, const boost::system::error_code&)> HandleAccept =
             [&HandleAccept, &service, &acceptor](AsyncClientConnectionPTR client, const boost::system::error_code& err) {
             client->Start();
@@ -27,9 +30,10 @@ namespace
     }
 }
 
-TEST_CASE("AsyncServerTest", "[Asio][Server]")
+TEST_CASE("AsyncServerTest", "[Asio][Async][Server]")
 {
     std::thread serverThread(ServerInstance);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     io_service clientService;
     ip::tcp::socket clientSocket(clientService);
@@ -72,13 +76,20 @@ TEST_CASE("AsyncServerTest", "[Asio][Server]")
     REQUIRE(word == "ping");
     in >> word;
     readBuffer.consume(readBuffer.size());
+    INFO("readBuffer:"+std::to_string(readBuffer.size()));
 
     std::this_thread::sleep_for(std::chrono::milliseconds(5500));
     writeBuffer = "ping\n";
     write(clientSocket, buffer(writeBuffer), ec);
-    INFO("write:" + ec.message());
+    INFO("write:"+ec.message());
+    REQUIRE(!ec);
+
+    readSize = std::string("ping ok\n").size();
+    read(clientSocket, readBuffer, ec);
+    INFO("read:"+ec.message());
     REQUIRE(ec);
 
+    clientSocket.shutdown(ip::tcp::socket::shutdown_both, ec);
     clientSocket.close(ec);
     serverThread.join();
 }

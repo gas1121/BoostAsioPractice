@@ -27,7 +27,7 @@ namespace
     }
 }
 
-TEST_CASE("SyncServerTest", "[Asio][Server]")
+TEST_CASE("SyncServerTest", "[Asio][Sync][Server]")
 {
     std::thread serverThread(ServerInstance);
 
@@ -84,6 +84,7 @@ TEST_CASE("SyncServerTest", "[Asio][Server]")
     INFO("read:"+ec.message());
     REQUIRE(ec);
 
+    clientSocket.shutdown(ip::tcp::socket::shutdown_both, ec);
     clientSocket.close(ec);
     serverThread.join();
 }

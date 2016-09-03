@@ -124,6 +124,7 @@ namespace BoostAsioServer {
     SyncClientConnection::Status SyncClientConnection::Stop()
     {
 		error_code ec;
+        socket_.shutdown(ip::tcp::socket::shutdown_both, ec);
         socket_.close(ec);
 		return StatusFromBoostErrorCode(ec);
     }

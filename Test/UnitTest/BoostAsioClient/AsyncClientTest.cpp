@@ -24,7 +24,7 @@ namespace
     }
 }
 
-TEST_CASE("AsyncClientTest", "[Asio][Client]")
+TEST_CASE("AsyncClientTest", "[Asio][Async][Client]")
 {
     std::thread serverThread(MockServer);
     std::thread clientThread(ClientInstance);

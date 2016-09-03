@@ -68,6 +68,7 @@ void MockServer()
     in >> word;
     REQUIRE(word == "ping");
 
+    serverSocket.shutdown(ip::tcp::socket::shutdown_both, ec);
     serverSocket.close(ec);
     REQUIRE(!ec);
 }
