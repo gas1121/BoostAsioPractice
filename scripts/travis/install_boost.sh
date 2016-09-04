@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BOOST_BASENAME=boost_1_61_0
-BOOST_LIBRARIES=(libboost_atomic.a libboost_chrono.a libboost_date_time.a libboost_filesystem.a libboost_iostreams.a libboost_locale.a libboost_log.a libboost_log_setup.a libboost_regex.a libboost_system.a libboost_thread.a)
+BOOST_LIBRARIES=(libboost_chrono.so libboost_date_time.so libboost_context.so libboost_regex.so libboost_system.so libboost_thread.so libboost_coroutine.so)
 
 function isLibraryMissing {
   for LIBRARY in $BOOST_LIBRARIES; do
@@ -22,5 +22,5 @@ if isLibraryMissing; then
 
   cd $BOOST_BASENAME
   ./bootstrap.sh
-  ./b2 toolset=gcc-5 link=static variant=release address-model=64 cxxflags="-std=c++14 -fPIC" boost.locale.icu=off --with-log --with-date_time --with-thread --with-filesystem --with-locale --with-regex --with-system --with-iostreams
+  ./b2 toolset=gcc variant=debug,release cxxflags="-std=c++11" --with-date_time --with-thread --with-regex --with-system --with-coroutine --with-context
 fi
