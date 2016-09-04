@@ -22,5 +22,5 @@ if isLibraryMissing; then
 
   cd $BOOST_BASENAME
   ./bootstrap.sh
-  ./b2 toolset=gcc cxxflags="-std=c++11" --with-date_time --with-thread --with-regex --with-system --with-coroutine --with-context
+  ./b2 toolset=gcc-5 cxxflags="-std=c++11" --with-date_time --with-thread --with-regex --with-system --with-coroutine --with-context
 fi

@@ -11,6 +11,9 @@ matrix:
 
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test # ppa:ubuntu-toolchain-r/test
+    - kubuntu-backports       # ppa:kubuntu-ppa/backports
     packages:
       - cmake
       - cmake-data
@@ -27,6 +30,9 @@ install:
   - scripts/travis/install_boost.sh
 
 before_script:
+  # Use GCC 5.
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - export CXXFLAGS="-fPIC" CFLAGS="-fPIC"
   # Install Catch
   - wget --no-check-certificate https://raw.github.com/philsquared/Catch/v1.5.6/single_include/catch.hpp --directory-prefix ThirdParty/Catch
   # Move into the cloned LOOT repo build path.
