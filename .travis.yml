@@ -36,7 +36,7 @@ install:
 
 before_script:
   # Install Catch
-  - wget --no-check-certificate https://raw.github.com/philsquared/Catch/v1.5.6/single_include/catch.hpp --directory-prefix ThirdParty/Catch )
+  - wget --no-check-certificate https://raw.github.com/philsquared/Catch/v1.5.6/single_include/catch.hpp --directory-prefix ThirdParty/Catch
   # Move into the cloned LOOT repo build path.
   - mkdir Build && cd Build
   # Link dynamically to the C++ standard library runtime.
