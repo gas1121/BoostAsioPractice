@@ -4,8 +4,8 @@ SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules)
 
 project(BoostAsioPractice)
 
-option(USE_LOCAL_THIRD_PARTY_LIBRARY 
-    "Set on to search external librarys in ThirdParty folder, OFF to search in operation system." ON)
+option(BOOST_IN_THIRD_PARTY_FOLDER
+    "Set on to search Boost in ThirdParty folder, OFF to search in operate system." ON)
 option(BUILD_TESTS "Build tests." ON)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -27,7 +27,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 endif()
 
 # Setting Boost dependency
-if(USE_LOCAL_THIRD_PARTY_LIBRARY)
+if(BOOST_IN_THIRD_PARTY_FOLDER)
     set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/ThirdParty/boost)
     set(BOOST_INCLUDEDIR ${BOOST_ROOT}/include)
     set(BOOST_LIBRARYDIR ${BOOST_ROOT}/lib)

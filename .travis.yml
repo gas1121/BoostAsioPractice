@@ -1,0 +1,44 @@
+sudo: false
+language: cpp
+compiler: gcc
+
+matrix:
+  include:
+    - env: CONF=debug ARCH=x86
+    - env: CONF=release ARCH=x86
+    - env: CONF=debug ARCH=x86_64
+    - env: CONF=release ARCH=x86_64
+
+addons:
+  apt:
+    packages:
+      - gcc-5
+      - g++-5
+      - cmake
+      - cmake-data
+
+cache:
+  directories:
+    - $HOME/boost_1_61_0/boost
+    - $HOME/boost_1_61_0/stage/lib
+
+install:
+  # Use GCC 5.
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - export CXXFLAGS="-fPIC" CFLAGS="-fPIC"
+  # Install Boost 1.61
+  # Script from https://github.com/loot/loot
+  - chmod +x scripts/travis/install_boost.sh
+  - scripts/travis/install_boost.sh
+
+before_script:
+  # Install Catch
+  - wget --no-check-certificate https://raw.github.com/philsquared/Catch/v1.5.6/single_include/catch.hpp --directory-prefix ThirdParty/Catch )
+  # Move into the cloned LOOT repo build path.
+  - mkdir Build && cd Build
+  # Link dynamically to the C++ standard library runtime.
+  - cmake .. -DBOOST_IN_THIRD_PARTY_FOLDER=OFF -DBOOST_ROOT=~/boost_1_61_0
+
+script:
+  - make
+  - ctest -V
