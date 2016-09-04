@@ -11,7 +11,12 @@ matrix:
 
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test # ppa:ubuntu-toolchain-r/test
+      - kubuntu-backports       # ppa:kubuntu-ppa/backports
     packages:
+      - gcc-5
+      - g++-5
       - cmake
       - cmake-data
 
@@ -21,6 +26,9 @@ cache:
     - $HOME/boost_1_61_0/stage/lib
 
 install:
+  # Use GCC 5.
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - export CXXFLAGS="-fPIC" CFLAGS="-fPIC"
   # Install Boost 1.61
   # Script from https://github.com/loot/loot
   - chmod +x scripts/travis/install_boost.sh
