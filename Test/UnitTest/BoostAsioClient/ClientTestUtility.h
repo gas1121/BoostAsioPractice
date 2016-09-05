@@ -1,3 +1,3 @@
 #pragma once
 
-void MockServer();
+void MockServer(unsigned short port);

@@ -8,14 +8,13 @@ using boost::system::error_code;
 
 namespace
 {
-    const unsigned short kPort = 8001;
     const std::string clientName = "testClient";
 }
 
-void MockServer()
+void MockServer(unsigned short port)
 {
     io_service service;
-    ip::tcp::acceptor acceptor(service, ip::tcp::endpoint(ip::tcp::v4(), kPort));
+    ip::tcp::acceptor acceptor(service, ip::tcp::endpoint(ip::tcp::v4(), port));
     ip::tcp::socket serverSocket(service);
     error_code ec;
     acceptor.accept(serverSocket, ec);

@@ -27,7 +27,8 @@ namespace
 
 TEST_CASE("SyncClientTest", "[Asio][Sync][Client]")
 {
-    std::thread serverThread(MockServer);
+    std::thread serverThread(MockServer, kPort);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     std::thread clientThread(ClientInstance);
 
     serverThread.join();
